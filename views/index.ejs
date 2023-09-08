@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="room.css">
+  <link rel="stylesheet" href="app.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #f0f0f0, #f5f5f5);
+    }
+  </style>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div id="room-container" class="center">
+    <h1>Available Rooms</h1>
+    <% Object.keys(rooms).forEach(room => { %>
+      <div class="room-card">
+        <h2><%= room %></h2>
+        <a href="/<%= room %>" class="btn">Join</a>
+      </div>
+    <% }) %>
+    <form action="/room" method="POST">
+      <input name="room" type="text" required placeholder="Enter room name">
+      <button type="submit" class="btn">Create Room</button>
+    </form>
+  </div>
+</body>
+</html>
