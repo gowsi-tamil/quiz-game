@@ -5,7 +5,14 @@ const http = require("http");
 const server = http.createServer(app);
 const socketIO = require("socket.io");
 
-const io = socketIO(server);
+//const io = socketIO(server);
+
+const io = socketIO(server, {
+  cors: {
+  origin: "https://quizwhiz-jmy1.onrender.com",
+  methods: ["GET","POST"]
+                             }
+});
 //const Player = require("./database.js");
 const mongoose = require("mongoose");
 require("dotenv").config();
