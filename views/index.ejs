@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Chat App</title>
+  <title>QuizWhiz</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous">
   <link rel="stylesheet" href="room.css">
   <link rel="stylesheet" href="app.css">
@@ -18,7 +18,8 @@
       background: linear-gradient(135deg, #f0f0f0, #f5f5f5);
     }
   </style>
-  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <!-- Load socket.io.js from a CDN in production -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>

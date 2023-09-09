@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
-const io = require("socket.io")(3000); // Pass the server instance to Socket.IO
+const io = require("socket.io")(server); // Pass the server instance to Socket.IO
 //const Player = require("./database.js");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -9,7 +9,7 @@ require("dotenv").config();
 
 var bodyParser = require("body-parser");
 
-mongoose.connect(process.env.DB_ATLAS, {
+mongoose.connect("mongodb+srv://gowsi:ncXEU2J3puENS6Bl@cluster0.plrul.mongodb.net/gameDB?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

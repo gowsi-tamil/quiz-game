@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3000");
+const socket = io("https://quizwhiz-jmy1.onrender.com");
 const messageContainer = document.getElementById("message-containers");
 const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");
