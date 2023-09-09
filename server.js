@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
-const io = require("socket.io")(3000); // Pass the server instance to Socket.IO
+const io = require("socket.io")(server); // Pass the server instance to Socket.IO
 //const Player = require("./database.js");
 const mongoose = require("mongoose");
 require("dotenv").config();
