@@ -6,6 +6,8 @@ const io = require("socket.io")(server); // Pass the server instance to Socket.I
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const cors = require('cors');
+app.use(cors());
 
 var bodyParser = require("body-parser");
 
