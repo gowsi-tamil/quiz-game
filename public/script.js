@@ -1,11 +1,4 @@
-//const socket = io();
-//const socket = io.connect("https://quizwhiz-jmy1.onrender.com");
-
-
-import io from 'socket.io-client';
- const socket = io("https://quizwhiz-jmy1.onrender.com",{
-         transports: ['websocket'],
-        });
+const socket = io("https://quizwhiz-jmy1.onrender.com");
 const messageContainer = document.getElementById("message-containers");
 const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");

@@ -1,28 +1,15 @@
 const express = require("express");
 const app = express();
-const http = require("http");
-
-const server = http.createServer(app);
-const socketIO = require("socket.io");
-
-//const io = socketIO(server);
-
-const io = socketIO(server, {
-  cors: {
-  origin: "https://quizwhiz-jmy1.onrender.com",
-  methods: ["GET","POST"]
-                             }
-});
+const server = require("http").Server(app);
+const io = require("socket.io")(3000); // Pass the server instance to Socket.IO
 //const Player = require("./database.js");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const cors = require('cors');
-app.use(cors());
 
 var bodyParser = require("body-parser");
 
-mongoose.connect("mongodb+srv://gowsi:ncXEU2J3puENS6Bl@cluster0.plrul.mongodb.net/gameDB?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DB_ATLAS, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
