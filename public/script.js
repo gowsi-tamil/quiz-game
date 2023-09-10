@@ -1,4 +1,3 @@
-//const socket = io("http://localhost:3000");
 const socket = io();
 
 const messageContainer = document.getElementById("message-containers");
@@ -72,46 +71,46 @@ let availableQuestions = [];
 
 let questions = [
   {
-    question: "Inside which HTML element do we put the JavaScript??",
-    choice1: "<script>",
-    choice2: "<javascript>",
-    choice3: "<js>",
-    choice4: "<scripting>",
-    answer: 1,
+    question: "Who gave the slogan -'Jai Hind?",
+    choice1: "Bhagat Singh",
+    choice2: "Subhash Chandra Bose",
+    choice3: "Mangal Pandey",
+    choice4: "Mahatma Gandhi",
+    answer: 2,
   },
   {
     question:
-      "What is the correct syntax for referring to an external script called 'xxx.js'?",
-    choice1: "<script href='xxx.js'>",
-    choice2: "<script name='xxx.js'>",
-    choice3: "<script src='xxx.js'>",
-    choice4: "<script file='xxx.js'>",
+      "During Which movement did Gandhi gave the call to boycott the foreign goods?",
+    choice1: "Khilafat Movement",
+    choice2: "Non-cooperation Movement",
+    choice3: "Swadeshi Movement",
+    choice4: "Civil Disobedience Movement",
     answer: 3,
   },
   {
-    question: " How do you write 'Hello World' in an alert box?",
-    choice1: "msgBox('Hello World');",
-    choice2: "alertBox('Hello World');",
-    choice3: "msg('Hello World');",
-    choice4: "alert('Hello World');",
+    question: "Who is the only Indian Spin bowler to have taken 5 wickets in a World Cup match?",
+    choice1: "Yuvraj Singh",
+    choice2: "aManinder Singh",
+    choice3: "Venkatpathy Raju",
+    choice4: "Harbhajan Singh",
+    answer: 1,
+  },
+  {
+    question: "Who is the only Indian Batsman to have scored a hundred on ODI debut?",
+    choice1: "Suresh Raina",
+    choice2: "Kedar Jadhav",
+    choice3: "Ajay Jadeja",
+    choice4: "KL Rahul",
     answer: 4,
   },
   {
-    question: " What is self closing tag??",
-    choice1: "<img/>",
-    choice2: "<javascript><javascript/>",
-    choice3: "<js></js>",
-    choice4: "</scripting>",
-    answer: 1,
-  },
-  {
     question:
-      "What is the correct syntax for referring to an external css called 'xxx.css'?",
-    choice1: "<link href='xxx.css'>",
-    choice2: "<link name='xxx.css'>",
-    choice3: "<link src='xxx.css'>",
-    choice4: "<link file='xxx.css'>",
-    answer: 1,
+      "Minimum duration to stay in India before applying for Indian Citizenship",
+    choice1: "3 Years",
+    choice2: "10 Years",
+    choice3: "5 Years",
+    choice4: "7 Years",
+    answer: 3,
   },
 ];
 

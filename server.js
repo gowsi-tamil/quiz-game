@@ -1,20 +1,12 @@
 const express = require("express");
 const app = express();
 const http = require('http')
-//const socketio = require('socket.io')
-
 const server = http.createServer(app); // Create an HTTP server using Express app
-//const server = http.createServer(app)
-//const io = socketio(server)
 console.log(server)
 const io = require("socket.io")(server); // Pass the server instance to Socket.IO
-//const Player = require("./database.js");
 const mongoose = require("mongoose");
 require("dotenv").config();
-
-
 var bodyParser = require("body-parser");
-
 mongoose.connect(process.env.DB_ATLAS, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -94,14 +86,6 @@ io.on("connection", (socket) => {
     });
 
 
-
-
-    //-----------
-
-
-
-
-
     const player = new Player({
       playername: name,
       room: room,
@@ -168,21 +152,11 @@ function getUserRooms(socket) {
   }, []);
 }
 
-//------
-
-
-
-
-
-
 
 app.get("/game/end", (req, res) => {
   console.log("end page");
   res.render("end", { name: "playername" });
 });
-
-
-
 
 
 var playerNAME = "";
