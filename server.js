@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
-const server = require("http").Server(app);
+const http = require('http')
+//const socketio = require('socket.io')
+
+const server = http.createServer(app); // Create an HTTP server using Express app
+//const server = http.createServer(app)
+//const io = socketio(server)
+console.log(server)
 const io = require("socket.io")(server); // Pass the server instance to Socket.IO
 //const Player = require("./database.js");
 const mongoose = require("mongoose");
@@ -36,6 +42,8 @@ app.use(bodyParser.json());
 
 const rooms = {};
 app.get("/", (req, res) => {
+
+  console.log("emoty")
   res.render("index", { rooms: rooms });
 });
 
@@ -43,9 +51,10 @@ app.post("/room", (req, res) => {
   if (rooms[req.body.room] != null) {
     return res.redirect("/");
   }
-  console.log("logggg", req.body.room);
+  console.log("inside going to room", req.body.room);
   rooms[req.body.room] = { users: {} };
   res.redirect(req.body.room);
+
   io.emit("room-created", req.body.room);
 });
 
@@ -56,9 +65,7 @@ app.get("/:room", (req, res) => {
   res.render("room", { roomName: req.params.room });
 });
 
-server.listen(5500, (req, res) => {
-  console.log("running on port 5500");
-});
+
 
 io.on("connection", (socket) => {
   socket.on("new-user", (room, name) => {
@@ -225,5 +232,7 @@ app.get("/game/board", (req, res) => {
   res.render("end", { playername: playerNAME, Score: score });
 });
 
-
+server.listen(5500, (req, res) => {
+  console.log("running on port 5500");
+});
 

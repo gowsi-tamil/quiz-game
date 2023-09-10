@@ -1,4 +1,6 @@
-const socket = io();//"https://quizwhiz-jmy1.onrender.com"
+//const socket = io("http://localhost:3000");
+const socket = io();
+
 const messageContainer = document.getElementById("message-containers");
 const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");
@@ -23,7 +25,7 @@ if (messageForm != null) {
 }
 
 socket.on("room-created", (room) => {
-  console.log("room", room);
+  console.log("room inside client", room);
   const roomElement = document.createElement("div");
   roomElement.innerText = room;
   const roomLink = document.createElement("a");
