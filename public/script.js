@@ -127,7 +127,6 @@ startGame = () => {
 
 getNewQuestion10 = () => {
   setInterval(function () {
-    //this code runs every 10 second
     getNewQuestion();
   }, 10000);
 };
@@ -159,7 +158,6 @@ getNewQuestion = () => {
         location.href = "/game/board";
       }
     })();
-    //return window.location.assign("/end");
   }
   questionCounter++;
   questionCounterText.innerText = `${questionCounter}  / ${Max_questions}`;

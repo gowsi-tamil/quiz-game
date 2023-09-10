@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
 const http = require('http')
-const server = http.createServer(app); // Create an HTTP server using Express app
-console.log(server)
-const io = require("socket.io")(server); // Pass the server instance to Socket.IO
+const server = http.createServer(app);
+const io = require("socket.io")(server); 
 const mongoose = require("mongoose");
 require("dotenv").config();
 var bodyParser = require("body-parser");
@@ -209,4 +208,3 @@ app.get("/game/board", (req, res) => {
 server.listen(5500, (req, res) => {
   console.log("running on port 5500");
 });
-
