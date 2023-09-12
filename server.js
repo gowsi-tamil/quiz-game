@@ -106,7 +106,6 @@ io.on("connection", (socket) => {
 
   deleteRooms = () => {
     socket.on("disconnect", () => {
-      console.log("disconnect-channel");
       getUserRooms(socket).forEach((room) => {
         socket
           .to(room)
@@ -165,7 +164,6 @@ app.post("/game/end", (req, res) => {
 
 
 app.get("/game/board", (req, res) => {
-  console.log("/game/board", playerNAME, score);
   res.render("end", { playername: playerNAME, Score: score });
 });
 
