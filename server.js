@@ -33,16 +33,14 @@ app.use(bodyParser.json());
 
 const rooms = {};
 app.get("/", (req, res) => {
-
-  console.log("emoty")
   res.render("index", { rooms: rooms });
 });
 
 app.post("/room", (req, res) => {
+
   if (rooms[req.body.room] != null) {
     return res.redirect("/");
   }
-  console.log("inside going to room", req.body.room);
   rooms[req.body.room] = { users: {} };
   res.redirect(req.body.room);
 
@@ -60,42 +58,20 @@ app.get("/:room", (req, res) => {
 
 io.on("connection", (socket) => {
   socket.on("new-user", (room, name) => {
-    console.log("new-user-serverside", room, name);
     socket.join(room);
     rooms[room].users[socket.id] = name;
-    console.log("users", rooms[room].users);
 
 
-    const playerScores = {};
   
-    socket.on("update-score", (roomName, playerName, score) => {
-      playerScores[playerName] = score;
-
-      io.in(roomName).emit("player-scores", playerScores);
-
-      if (Object.keys(playerScores).length === 2) {
-        const players = Object.keys(playerScores);
-        const player1 = players[0];
-        const player2 = players[1];
-
-        const winner = playerScores[player1] > playerScores[player2] ? player1 : player2;
-
-        io.in(roomName).emit("quiz-end", { winner, score: playerScores[winner] });
-      }
-    });
-
 
     const player = new Player({
       playername: name,
       room: room,
     });
     player.save().then((data) => {
-      console.log("Its done");
     });
 
     var userPerRoom = Object.keys(rooms[room].users).length;
-    console.log("user per room", userPerRoom);
-
     if (userPerRoom === 2) {
       io.in(room).emit("quiz-start", room);
     }
@@ -105,10 +81,8 @@ io.on("connection", (socket) => {
     
     if (userPerRoom <= 2) {
       socket.to(room).broadcast.emit("user-connected", name);
-      console.log("server-side", name);
     }
     if (userPerRoom > 2) {
-      console.log(userPerRoom);
       socket.emit("user-full", "User-full");
     }
   });
@@ -153,7 +127,6 @@ function getUserRooms(socket) {
 
 
 app.get("/game/end", (req, res) => {
-  console.log("end page");
   res.render("end", { name: "playername" });
 });
 
@@ -161,17 +134,10 @@ app.get("/game/end", (req, res) => {
 var playerNAME = "";
 var score = 0;
 app.post("/game/end", (req, res) => {
-  console.log("end game post", req.body);
   const roomName = req.body.roomName;
   const name = req.body.name;
   score = req.body.score;
   playerNAME = name;
-
-  const update = {
-    playername: name,
-    room: roomName,
-    score: score,
-  };
 
   const query = {
     room: req.body.roomName,
@@ -189,9 +155,7 @@ app.post("/game/end", (req, res) => {
         sendResult(score, roomName, name);
 
          deleteRooms();
-         console.log("rooms")
 
-console.log(rooms)
         res.jsonp("True");
       }
     }

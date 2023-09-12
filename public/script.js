@@ -32,6 +32,7 @@ socket.on("room-created", (room) => {
   roomLink.innerText = "join";
   roomContainer.append(roomElement);
   roomContainer.append(roomLink);
+  console.log("roomLink",roomLink)
 });
 
 socket.on("chat-message", (data) => {
@@ -49,6 +50,8 @@ socket.on("user-disconnected", (name) => {
 
 socket.on("user-full", (name) => {
   console.log("nameee", name);
+  alert("Sorry, the room is full. Please try another room.");
+
   location.href = "/";
 });
 
@@ -197,6 +200,7 @@ choices.forEach((choice) => {
       selectChoice.parentElement.classList.remove(classToapply);
       getNewQuestion();
     }, 1000);
+    
   });
 });
 
